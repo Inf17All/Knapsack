@@ -8,4 +8,10 @@ public abstract class Mutation {
     public String toString() {
         return getClass().getSimpleName();
     }
+
+    protected getRandomNumber(Knapsack knapsack){
+        //int len = knapsack.items.size();
+
+
+    }
 }
