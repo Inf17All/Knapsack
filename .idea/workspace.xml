@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98f9bb3f-58ae-400c-9685-e6aa3e9df70d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="98f9bb3f-58ae-400c-9685-e6aa3e9df70d" name="Default" comment="" />
     <ignored path="$USER_HOME$/Dropbox/lv_software_engineering_II_2017_master/01_evolutionaere_algorithmen/03_implementierung/03_training/02_workspace/_templates/knapsack/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
