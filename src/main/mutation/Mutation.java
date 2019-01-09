@@ -17,7 +17,7 @@ public abstract class Mutation {
     protected int getRandomIndex(Knapsack knapsack){
         ArrayList<Item> items = knapsack.getItems();
         int len = items.size();
-        return rdm.nextInt(0,len);
+        return rdm.nextInt(0,len-1);
     }
 
     //Gibt eine zufällige Range der ArrayList mit items aus
@@ -26,10 +26,10 @@ public abstract class Mutation {
         int[] tempArray = new int[2];
         ArrayList<Item> items = knapsack.getItems();
         int len = items.size();
-        int firstRdm = rdm.nextInt(0,len);
+        int firstRdm = rdm.nextInt(0,len-1);
         int secondRdm;
         do{
-            secondRdm = rdm.nextInt(0,len);
+            secondRdm = rdm.nextInt(0,len-1);
         }
         while(firstRdm == secondRdm);
         if(firstRdm<secondRdm){
@@ -38,7 +38,7 @@ public abstract class Mutation {
         }
         else{
             tempArray[0] = secondRdm;
-            tempArray[1]= firstRdm;
+            tempArray[1] = firstRdm;
         }
         return tempArray;
     }
