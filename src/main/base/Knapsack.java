@@ -1,39 +1,35 @@
 package base;
 
+import configuration.Configuration;
+
 import java.util.ArrayList;
 
 public class Knapsack {
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Integer> geneList = new ArrayList<>();
 
     public Knapsack() {
     }
 
     public Knapsack(Knapsack knapsack) {
-        for (Item item : knapsack.getItems())
-            items.add(item);
+        geneList.clear();
+        geneList.addAll(knapsack.getGeneList());
+    }
+
+    public ArrayList<Integer> getGeneList() {
+        return geneList;
     }
 
     public int getTotal() {
         int total = 0;
 
-        for (int i = 0; i < items.size(); i++)
-            total += items.get(i).getValue();
+        for (int i = 0; i < geneList.size(); i++)
+            if (geneList.get(i) == 1)
+                total += Configuration.instance.itemList.get(i).getValue();
+
         return total;
     }
 
-    public void addItem(Item item) {
-        items.add(item);
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Item item : items)
-            stringBuilder.append(item.getName() + " ");
-        stringBuilder.append(" - ").append("total: ").append(getTotal());
-        return stringBuilder.toString();
+        return geneList.toString();
     }
 }
