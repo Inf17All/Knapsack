@@ -22,8 +22,8 @@ public abstract class Mutation {
 
     //Gibt eine zufällige Range der ArrayList mit items aus
     //plus die größe der range
-    //Hierbei ist die erste Zahl des return-Arrays kleiner als die 2.
-    protected int[] getRandomRange(Knapsack knapsack){
+    //Hierbei ist die erste Zahl des return-Arrays kleiner als die 2. solange ordered auf true gesetzt ist
+    protected int[] getRandomRange(Knapsack knapsack, boolean ordered){
         int[] tempArray = new int[3];
         ArrayList<Integer> items = knapsack.getGeneList();
         int len = items.size();
@@ -33,24 +33,16 @@ public abstract class Mutation {
             secondRdm = rdm.nextInt(0,len-1);
         }
         while(firstRdm == secondRdm);
-        if(firstRdm<secondRdm){
-            tempArray[0] = firstRdm;
-            tempArray[1] = secondRdm;
+        if(ordered) {
+            if (firstRdm < secondRdm) {
+                tempArray[0] = firstRdm;
+                tempArray[1] = secondRdm;
+            } else {
+                tempArray[0] = secondRdm;
+                tempArray[1] = firstRdm;
+            }
+            tempArray[2] = tempArray[1] - tempArray[0];
         }
-        else{
-            tempArray[0] = secondRdm;
-            tempArray[1] = firstRdm;
-        }
-        tempArray[2] = tempArray[1] - tempArray[0];
         return tempArray;
     }
-
-    /*protected ArrayList<Integer> getValueList(Knapsack knapsack){
-        ArrayList<Integer> items = knapsack.getGeneList();
-        ArrayList<Integer> values = new ArrayList<Integer>();
-        for (Item temp: items) {
-            values.add(temp.getValue());
-        }
-        return values;
-    }*/
 }

@@ -10,9 +10,9 @@ public class InversionMutation extends Mutation {
     public ArrayList<Integer> doMutation(Knapsack knapsack) {
         ArrayList<Integer> values = knapsack.getGeneList();
         ArrayList<Integer> valuesNew = new ArrayList<Integer>();
-        int[] range = getRandomRange(knapsack);
-        int i = 0;
+        int[] range = getRandomRange(knapsack,true);
 
+        int i = 0;
         while(i<range[0]){
             valuesNew.add(values.get(i));
             i++;
