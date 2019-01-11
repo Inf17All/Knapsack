@@ -6,7 +6,7 @@ import random.MersenneTwisterFast;
 import java.util.ArrayList;
 
 public abstract class Mutation {
-    public abstract void doMutation(Knapsack knapsack);
+    public abstract ArrayList<Integer> doMutation(Knapsack knapsack);
     MersenneTwisterFast rdm = new MersenneTwisterFast();
 
     public String toString() {

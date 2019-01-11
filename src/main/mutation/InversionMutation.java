@@ -7,8 +7,8 @@ import java.util.ArrayList;
 // INVM
 public class InversionMutation extends Mutation {
 
-    public void doMutation(Knapsack knapsack) {
-        ArrayList<Integer> values = knapsack.getGenelList();
+    public ArrayList<Integer> doMutation(Knapsack knapsack) {
+        ArrayList<Integer> values = knapsack.getGeneList();
         ArrayList<Integer> valuesNew = new ArrayList<Integer>();
         int[] range = getRandomRange(knapsack);
         int i = 0;
@@ -29,6 +29,6 @@ public class InversionMutation extends Mutation {
             valuesNew.add(values.get(i));
             i++;
         }
-        //return valuesNew;
+        return valuesNew;
     }
 }
