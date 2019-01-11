@@ -1,7 +1,7 @@
-package main.mutation;
+package mutation;
 
-import main.base.Knapsack;
-import main.base.Item;
+import base.Knapsack;
+import base.Item;
 import random.MersenneTwisterFast;
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public abstract class Mutation {
 
     //Gibt zufälligen Index der ArrayList mit items aus
     protected int getRandomIndex(Knapsack knapsack){
-        ArrayList<Item> items = knapsack.getItems();
+        ArrayList<Integer> items = knapsack.getGeneList();
         int len = items.size();
         return rdm.nextInt(0,len-1);
     }
@@ -25,7 +25,7 @@ public abstract class Mutation {
     //Hierbei ist die erste Zahl des return-Arrays kleiner als die 2.
     protected int[] getRandomRange(Knapsack knapsack){
         int[] tempArray = new int[3];
-        ArrayList<Item> items = knapsack.getItems();
+        ArrayList<Integer> items = knapsack.getGeneList();
         int len = items.size();
         int firstRdm = rdm.nextInt(0,len-1);
         int secondRdm;
@@ -45,12 +45,12 @@ public abstract class Mutation {
         return tempArray;
     }
 
-    protected ArrayList<Integer> getValueList(Knapsack knapsack){
-        ArrayList<Item> items = knapsack.getItems();
+    /*protected ArrayList<Integer> getValueList(Knapsack knapsack){
+        ArrayList<Integer> items = knapsack.getGeneList();
         ArrayList<Integer> values = new ArrayList<Integer>();
         for (Item temp: items) {
             values.add(temp.getValue());
         }
         return values;
-    }
+    }*/
 }
