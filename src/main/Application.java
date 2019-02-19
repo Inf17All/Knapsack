@@ -1,4 +1,7 @@
+import base.Knapsack;
+import crossover.ArithmeticCrossover;
 import crossover.Crossover;
+import crossover.ScatteredCrossover;
 import data.HSQLDBManager;
 import mutation.Mutation;
 import selection.Selection;
@@ -9,12 +12,16 @@ public class Application {
     private Mutation mutation;
 
     public static void main(String... args) {
-        Application application = new Application();
-        application.startupHSQLDB();
-        application.loadData();
-        application.initConfiguration();
-        application.execute();
-        application.shutdownHSQLDB();
+        ArithmeticCrossover arithmeticCrossover = new ArithmeticCrossover();
+        arithmeticCrossover.doCrossover(new Knapsack(), new Knapsack());
+        ScatteredCrossover scatteredCrossover = new ScatteredCrossover();
+        scatteredCrossover.doCrossover(new Knapsack(), new Knapsack());
+        //Application application = new Application();
+        //application.startupHSQLDB();
+        //application.loadData();
+        //application.initConfiguration();
+        //application.execute();
+        //application.shutdownHSQLDB();
     }
 
     public void startupHSQLDB() {
