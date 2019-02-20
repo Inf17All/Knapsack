@@ -8,13 +8,21 @@ import java.util.ArrayList;
 
 // SX
 public class ScatteredCrossover extends Crossover {
+    // setGeneList Methode fehlt in Knapsack
     public ArrayList<Knapsack> doCrossover(Knapsack knapsack01, Knapsack knapsack02) {
+        ArrayList<Knapsack> knapsackChilds = new ArrayList<>();
         MersenneTwisterFast random = new MersenneTwisterFast();
-        //create random bytes -> 150 Items
-        ArrayList<Integer> randomBytes = new ArrayList<>();
-        for (int i = 0; i < 150; i++) randomBytes.add(random.nextInt(0, 1));
+        for (int j = 0; j < 2; j++) {
+            ArrayList<Integer> tempChild = new ArrayList<>();
+            for (int i = 0; i < 150; i++) {
+                if (random.nextInt(0, 1) == 1) tempChild.add(knapsack01.getGeneList().get(i));
+                else tempChild.add(knapsack02.getGeneList().get(i));
+            }
+            Knapsack tempKnapsackChild = new Knapsack();
+            tempKnapsackChild.setGeneList(tempChild);
+            knapsackChilds.add(tempKnapsackChild);
+        }
 
-        //Wenn 1 dann Gen von knapsack1, wenn 0 dann Gen von knapsack2
-        return null;
+        return knapsackChilds;
     }
 }

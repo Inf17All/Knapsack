@@ -19,6 +19,10 @@ public class Knapsack {
         return geneList;
     }
 
+    public void setGeneList(ArrayList<Integer> geneList) {
+        this.geneList = geneList;
+    }
+
     public int getTotal() {
         int total = 0;
 
