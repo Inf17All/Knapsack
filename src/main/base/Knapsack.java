@@ -27,11 +27,11 @@ public class Knapsack {
         int total = 0;
 
         for (int i = 0; i < geneList.size(); i++)
-            if (geneList.get(i) == 1) {}
-                //total += Configuration.instance.itemList.get(i).getValue();
-
-        //return total;
-                return 1;
+            if (geneList.get(i) == 1) {
+                total += Configuration.instance.itemList.get(i).getValue();
+            }
+            return total;
+            return 1;
     }
 
     public String toString() {

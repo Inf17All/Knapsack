@@ -9,10 +9,28 @@ import java.util.ArrayList;
 public class ArithmeticCrossover extends Crossover {
     public ArrayList<Knapsack> doCrossover(Knapsack knapsack01, Knapsack knapsack02) {
         MersenneTwisterFast random = new MersenneTwisterFast();
-        double alpha = random.nextDouble(true, true);
-        ArrayList<Integer> geneList01 = knapsack01.getGeneList();
-        ArrayList<Integer> geneList02 = knapsack02.getGeneList();
-        //offspring = alpha X knapsack01 + (1-alpha) X knapsack02
-        return null;
+        ArrayList<Knapsack> knapsackChilds = new ArrayList<>();
+
+        Knapsack betterFitness = knapsack02;
+        Knapsack worseFitness = knapsack01;
+
+        if(knapsack01.getTotal() > knapsack02.getTotal()) {
+            betterFitness = knapsack01;
+            worseFitness = knapsack02;
+        }
+
+        for (int j = 0; j < 2; j++) {
+            ArrayList<Integer> tempChild = new ArrayList<>();
+            while (tempChild.size() < 150) {
+                double alpha = random.nextDouble(true, true);
+                int index = ((int) (alpha * betterFitness.getTotal() +  (1 - alpha) * worseFitness.getTotal())) % 150;
+                tempChild.add(knapsack01.getGeneList().get(index));
+                tempChild.add(knapsack02.getGeneList().get(index));
+            }
+            Knapsack tempKnapsackChild = new Knapsack();
+            tempKnapsackChild.setGeneList(tempChild);
+            knapsackChilds.add(tempKnapsackChild);
+        }
+        return knapsackChilds;
     }
 }
