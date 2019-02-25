@@ -7,5 +7,6 @@ public class TestArithmeticCrossover {
     @Test
     public void testArithmeticCrossover() {
         Crossover crossover = new ArithmeticCrossover();
+
     }
 }

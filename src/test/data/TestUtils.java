@@ -2,7 +2,9 @@ package data;
 
 import base.Item;
 import base.Knapsack;
-import base.Population;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestUtils {
     public static Knapsack getTestKnapsack() {
@@ -21,9 +23,11 @@ public class TestUtils {
         return knapsack;
     }
 
-    public static Population getTestPopulation() {
-        Population population = new Population();
-        System.out.println("Testpopulation is empty");
+    public static List<Knapsack> getTestPopulation() {
+        List<Knapsack> population = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            population.add(getTestKnapsack());
+        }
         return population;
     }
 }

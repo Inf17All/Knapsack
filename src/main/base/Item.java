@@ -21,4 +21,15 @@ public class Item {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Item) {
+            Item compare = (Item) obj;
+            if (compare.name.equals(name) && compare.size == size && compare.value == value) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

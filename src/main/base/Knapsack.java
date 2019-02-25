@@ -29,6 +29,17 @@ public class Knapsack {
         return items;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Knapsack) {
+            Knapsack compare = (Knapsack) obj;
+            if (compare.getItems().equals(getItems())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Item item : items)
