@@ -1,6 +1,5 @@
 package base;
 
-import configuration.Configuration;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class Knapsack {
 
             }
         MersenneTwisterFast random = new MersenneTwisterFast();
-            //return total;
+        //return total;
         return random.nextInt(0, 1133);
     }
 

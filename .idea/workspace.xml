@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98f9bb3f-58ae-400c-9685-e6aa3e9df70d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/base/Knapsack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/base/Knapsack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/crossover/HeuristicCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/crossover/HeuristicCrossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/crossover/ScatteredCrossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/crossover/ScatteredCrossover.java" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/Dropbox/lv_software_engineering_II_2017_master/01_evolutionaere_algorithmen/03_implementierung/03_training/02_workspace/_templates/knapsack/out/" />
@@ -25,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -34,28 +33,25 @@
         <entry file="file://$PROJECT_DIR$/src/main/crossover/HeuristicCrossover.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-end-line="37" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/crossover/ScatteredCrossover.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -64,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/base/Knapsack.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#396#397#0" expanded="true" />
                 <element signature="e#456#457#0" expanded="true" />
@@ -77,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="153">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -152,9 +148,9 @@
         <option value="$PROJECT_DIR$/src/main/Application.java" />
         <option value="$PROJECT_DIR$/src/main/base/Knapsack.java" />
         <option value="$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java" />
-        <option value="$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java" />
         <option value="$PROJECT_DIR$/src/main/crossover/HeuristicCrossover.java" />
         <option value="$PROJECT_DIR$/src/main/crossover/ScatteredCrossover.java" />
+        <option value="$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java" />
       </list>
     </option>
   </component>
@@ -450,7 +446,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550672841863" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551448270803" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -565,12 +561,12 @@
       <workItem from="1550922093152" duration="5852000" />
       <workItem from="1551177945349" duration="698000" />
       <workItem from="1551186158230" duration="221000" />
-      <workItem from="1551444691033" duration="2696000" />
+      <workItem from="1551444691033" duration="3459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14996000" />
+    <option name="totallyTimeSpent" value="15759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -587,7 +583,7 @@
       <window_info id="Learn" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32719395" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32719395" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -876,7 +872,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/base/Knapsack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#396#397#0" expanded="true" />
             <element signature="e#456#457#0" expanded="true" />
@@ -885,41 +881,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/crossover/HeuristicCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/crossover/ScatteredCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/crossover/IntermediateCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/crossover/ArithmeticCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-end-line="37" selection-end-column="1" />
         </state>
       </provider>
     </entry>

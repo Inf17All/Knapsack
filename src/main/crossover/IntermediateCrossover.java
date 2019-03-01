@@ -6,6 +6,7 @@ import random.MersenneTwisterFast;
 import java.util.ArrayList;
 
 // IX
+// Team 21
 // Berechnung Index: ratio*rand
 // Bei diesem Index wird jeweils das Chromosom von beiden Knapsäcken in die neue Child Gene List geschrieben, bis die neue Liste voll ist (Größe 150)
 public class IntermediateCrossover extends Crossover {

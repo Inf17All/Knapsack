@@ -1,11 +1,11 @@
 package crossover;
 
 import base.Knapsack;
-import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
 
 // HX
+// Team 21
 public class HeuristicCrossover extends Crossover {
     public ArrayList<Knapsack> doCrossover(Knapsack knapsack01, Knapsack knapsack02) {
         // ratio fester Wert
@@ -13,7 +13,7 @@ public class HeuristicCrossover extends Crossover {
         Knapsack betterFitness = knapsack02;
         Knapsack worseFitness = knapsack01;
 
-        if(knapsack01.getTotal() > knapsack02.getTotal()) {
+        if (knapsack01.getTotal() > knapsack02.getTotal()) {
             betterFitness = knapsack01;
             worseFitness = knapsack02;
         }

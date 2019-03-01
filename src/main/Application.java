@@ -17,7 +17,7 @@ public class Application {
         ArrayList<Integer> knapsack02Genes = new ArrayList<>();
         MersenneTwisterFast random = new MersenneTwisterFast();
 
-        while(knapsack01Genes.size() < 150) {
+        while (knapsack01Genes.size() < 150) {
             knapsack01Genes.add(random.nextInt(0, 1));
             knapsack02Genes.add(random.nextInt(0, 1));
         }
@@ -39,7 +39,7 @@ public class Application {
         HeuristicCrossover heuristicCrossover = new HeuristicCrossover();
         ArrayList<Knapsack> heuristicChilds = heuristicCrossover.doCrossover(knapsack01, knapsack02);
 
-        System.out.println("");
+        System.out.println();
         //Application application = new Application();
         //application.startupHSQLDB();
         //application.loadData();

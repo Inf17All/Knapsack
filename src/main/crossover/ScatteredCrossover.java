@@ -3,10 +3,10 @@ package crossover;
 import base.Knapsack;
 import random.MersenneTwisterFast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // SX
+// Team 21
 // Erstellen einer random Zahl 0 oder 1
 // Wenn die random Zahl 1 ist, wird das Chromosom von Knapsack 1 genommen, bei 0 das Chromosom von Knapsack 0
 public class ScatteredCrossover extends Crossover {
