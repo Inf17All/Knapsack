@@ -18,6 +18,11 @@ public class Knapsack {
     public ArrayList<Integer> getGeneList() {
         return geneList;
     }
+    
+    // Setter für Crossover
+    public void setGeneList(ArrayList<Integer> geneList) {
+        this.geneList = geneList;
+    }
 
     public int getTotal() {
         int total = 0;
