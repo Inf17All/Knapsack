@@ -22,7 +22,9 @@ public class ArithmeticCrossover extends Crossover {
         for (int j = 0; j < 2; j++) {
             ArrayList<Integer> tempChild = new ArrayList<>();
             while (tempChild.size() < 150) {
+                // alpha [0,1]
                 double alpha = random.nextDouble(true, true);
+                // Bei diesem Index wird jeweils das Chromosom von beiden Knapsäcken in die neue Child Gene List geschrieben, bis die neue Liste voll ist (Größe 150)
                 int index = ((int) (alpha * betterFitness.getTotal() +  (1 - alpha) * worseFitness.getTotal())) % 150;
                 tempChild.add(knapsack01.getGeneList().get(index));
                 tempChild.add(knapsack02.getGeneList().get(index));

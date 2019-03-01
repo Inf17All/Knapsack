@@ -1,6 +1,7 @@
 package base;
 
 import configuration.Configuration;
+import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
 
@@ -28,10 +29,12 @@ public class Knapsack {
 
         for (int i = 0; i < geneList.size(); i++)
             if (geneList.get(i) == 1) {
-                total += Configuration.instance.itemList.get(i).getValue();
+                //total += Configuration.instance.itemList.get(i).getValue();
+
             }
-            return total;
-            return 1;
+        MersenneTwisterFast random = new MersenneTwisterFast();
+            //return total;
+        return random.nextInt(0, 1133);
     }
 
     public String toString() {

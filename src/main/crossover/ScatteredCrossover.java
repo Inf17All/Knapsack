@@ -7,10 +7,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // SX
-// Erstellen einer random Gene List
-// Wenn das Gen in der random List 1 ist, wird das Chromosom von Knapsack 1 genommen, bei 0 das Chromosom von Knapsack 0
+// Erstellen einer random Zahl 0 oder 1
+// Wenn die random Zahl 1 ist, wird das Chromosom von Knapsack 1 genommen, bei 0 das Chromosom von Knapsack 0
 public class ScatteredCrossover extends Crossover {
-    // setGeneList Methode fehlt in Knapsack
     public ArrayList<Knapsack> doCrossover(Knapsack knapsack01, Knapsack knapsack02) {
         ArrayList<Knapsack> knapsackChilds = new ArrayList<>();
         MersenneTwisterFast random = new MersenneTwisterFast();
