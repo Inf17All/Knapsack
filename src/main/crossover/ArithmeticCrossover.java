@@ -6,6 +6,7 @@ import random.MersenneTwisterFast;
 import java.util.ArrayList;
 
 // AX
+// Team 21
 public class ArithmeticCrossover extends Crossover {
     public ArrayList<Knapsack> doCrossover(Knapsack knapsack01, Knapsack knapsack02) {
         MersenneTwisterFast random = new MersenneTwisterFast();
