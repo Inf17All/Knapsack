@@ -70,13 +70,10 @@ public class ApplicationParameterRecommender {
             this.Mutation = Mutation;
             this.MutationRatio = MutationRatio;
             this.Selection = Selection;
-            //generateInitialPopulation();
         }
 
         public void run() {
-            for(int i = 0; i< Configuration.instance.maxIterations; i++) { // Läuft so oft wie -i angegeben
-                application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection);
-            }
+            application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection, Configuration.instance.maxIterations);
             fitness = application.getFitness();
             if(fitness > Configuration.instance.bestFitnessService.fitness){
                 Configuration.instance.bestFitnessService = this;
