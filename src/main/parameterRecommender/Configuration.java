@@ -7,6 +7,7 @@ public enum Configuration {
 
     public int numberOfProcessors = Runtime.getRuntime().availableProcessors();
     public int maxIterations = 1000000;
+    public ApplicationParameterRecommender.Service bestFitnessService = null;
 
     public void setMaxIterations(int iterations){
         this.maxIterations = iterations;

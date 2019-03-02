@@ -62,6 +62,12 @@ public class ApplicationParameterRecommender {
         private String Mutation;
         private String MutationRatio;
         private String Selection;
+        private double fitness = 0;
+
+        public double getFitness() {
+            return fitness;
+        }
+
         //TODO Population einfügen
 
         public Service(String Crossover, String CrossoverRatio, String Mutation, String MutationRatio, String Selection) {
@@ -71,18 +77,22 @@ public class ApplicationParameterRecommender {
             this.MutationRatio = MutationRatio;
             this.Selection = Selection;
             //TODO Erzeuge Anfangspopulation
-            //TODO Berechne Fitness der Anfangspopulation
+            //generateInitialPopulation();
         }
 
         public void run() {
             //for(int i = 0; i< 10000; i++) {
-            for(int i = 0; i< Configuration.MaximumNumberOfIterations; i++) { // Läuft so oft wie -i angegeben
+            for(int i = 0; i< Configuration.instance.maxIterations; i++) { // Läuft so oft wie -i angegeben
                 //TODO Configuration Name anpassen
                 if(Crossover == "1PX") {
                     //TODO führe 1PX aus
                 } //TODO Jeden Parameter Abfrage zund entsprechende Mthode ausführen
             }
             //TODO Auswertung der Fitness
+            //fitness = population.getFitness();
+            if(fitness > Configuration.instance.bestFitnessService.fitness){
+                Configuration.instance.bestFitnessService = this;
+            }
         }
     }
 }
