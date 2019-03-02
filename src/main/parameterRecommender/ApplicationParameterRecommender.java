@@ -1,5 +1,7 @@
 package parameterRecommender;
 
+import base.Knapsack;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,6 +67,8 @@ public class ApplicationParameterRecommender {
         }
 
         //TODO Population einfügen
+        Knapsack knapsack = new Knapsack();
+        // Vielleicht damit?
 
         public Service(String Crossover, String CrossoverRatio, String Mutation, String MutationRatio, String Selection) {
             this.Crossover = Crossover;
