@@ -17,6 +17,7 @@ public class ApplicationParameterRecommender {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        printMaxFitness();
     }
 
     public static ExecutorService execute() {
@@ -81,14 +82,14 @@ public class ApplicationParameterRecommender {
                 Configuration.instance.bestFitnessService = this;
             }
         }
+    }
 
-        public void printMaxFitness(){
-            System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.fitness);
-            System.out.println("Parameters: {Crossover " + Configuration.instance.bestFitnessService.Crossover
-                                + ", CrossoverRatio "+ Configuration.instance.bestFitnessService.CrossoverRatio
-                                + ", Mutation "+ Configuration.instance.bestFitnessService.Mutation
-                                + ", MutationRatio "+ Configuration.instance.bestFitnessService.MutationRatio
-                                + ", Selection"+ Configuration.instance.bestFitnessService.Selection+"}");
-        }
+    public static void printMaxFitness(){
+        System.out.println("Max fitness is: " + Configuration.instance.bestFitnessService.fitness);
+        System.out.println("Parameters: {Crossover " + Configuration.instance.bestFitnessService.Crossover
+                + ", CrossoverRatio "+ Configuration.instance.bestFitnessService.CrossoverRatio
+                + ", Mutation "+ Configuration.instance.bestFitnessService.Mutation
+                + ", MutationRatio "+ Configuration.instance.bestFitnessService.MutationRatio
+                + ", Selection"+ Configuration.instance.bestFitnessService.Selection+"}");
     }
 }
