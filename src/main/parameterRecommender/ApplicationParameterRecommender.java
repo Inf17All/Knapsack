@@ -8,8 +8,25 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationParameterRecommender {
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) {
         //TODO Parameter für ParameterRecommenderApplication entweder aus main args oder mit Scanner zur Laufzeit einlesen
+
+        ExecutorService executor = execute();
+        try {
+            while (!executor.awaitTermination(1, TimeUnit.SECONDS)) {
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+        //TODO nach 10000 Iterationen einer bestimmten Parameter Konfiguration die Kapazität, Fitness usw. testen und dann optimale Parameter vorschlagen
+    }
+
+    //wird 3200 mal aufgerufen
+    public static ExecutorService execute() {
+        ExecutorService executor = Executors.newFixedThreadPool(Configuration.instance.numberOfProcessors);
 
         ArrayList<String> cm = new ArrayList<>();
         cm.addAll(Arrays.asList("1PX", "2PX", "AX", "HX", "IX", "KPX", "SX", "UNX"));
@@ -23,99 +40,49 @@ public class ApplicationParameterRecommender {
         //TSP: s.addAll(Arrays.asList("PRWS", "RBRWS", "RWS", "TS"));
         s.addAll(Arrays.asList("BS", "RS", "RWS", "TS"));
 
-
-        for(int i = 0; i< 10000; i++) {
-
-
-            int counter = 0;
-            for(String Crossover : cm) {
-                for(String CrossoverRatio : cr) {
-                    for(int c = 0; c < 5; c++) {
-                        for(int d = 0; d < 5; d++) {
-                            //for(int e = 0; e < 4; e++) {
-                            for(String selection : s)
-                                switch (selection) {
-                                    case "BS":
-                                        // Execute Service BS Selection
-                                        ExecutorService executor = execute();
-
-                                        try {
-                                            while (!executor.awaitTermination(1, TimeUnit.SECONDS)) {
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                }
+        for(String Crossover : cm) {
+            for(String CrossoverRatio : cr) {
+                for(String Mutation : mm) {
+                    for(String MutationRatio : mr) {
+                        for(String Selection : s) {
+                            Runnable worker = new Service(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection);
+                            executor.execute(worker);
                         }
                     }
                 }
             }
         }
-        //TODO nach 10000 Iterationen einer bestimmten Parameter Konfiguration die Kapazität, Fitness usw. testen und dann optimale Parameter vorschlagen
-    }
-
-    public static ExecutorService execute(String Operation) { // bleibt immer gleich, nur Service ändert sich
-        ExecutorService executor = Executors.newFixedThreadPool(Configuration.instance.numberOfProcessors);
-
-        ArrayList<Integer> knapsack01Genes = new ArrayList<>();
-        ArrayList<Integer> knapsack02Genes = new ArrayList<>();
-        random.MersenneTwisterFast random = new random.MersenneTwisterFast();
-
-        while(knapsack01Genes.size() < 150) {
-            knapsack01Genes.add(random.nextInt(0, 1));
-            knapsack02Genes.add(random.nextInt(0, 1));
-        }
-        base.Knapsack knapsack01 = new base.Knapsack();
-        //knapsack01.setGeneList(knapsack01Genes);
-        base.Knapsack knapsack02 = new base.Knapsack();
-        //knapsack02.setGeneList(knapsack02Genes);
-
-        if(Operation == MutationType.DM.name()) {
-            Runnable worker = new ServiceDM(knapsack01, knapsack02);
-        } else {
-            //TODO Throw Exception
-            Runnable worker = new Service(null, null);
-        }
-
-        executor.execute(worker);
-
         executor.shutdown();
         return executor;
     }
 
     public static class Service implements Runnable {
-        //TODO Variablen einfügen
-        base.Knapsack knapsack01;
-        base.Knapsack knapsack02;
+        private String Crossover;
+        private String CrossoverRatio;
+        private String Mutation;
+        private String MutationRatio;
+        private String Selection;
+        //TODO Population einfügen
 
-        public Service(base.Knapsack knapsack01, base.Knapsack knapsack02) {
-            //TODO Konstruktor
-            this.knapsack01 = knapsack01;
-            this.knapsack02 = knapsack02;
+        public Service(String Crossover, String CrossoverRatio, String Mutation, String MutationRatio, String Selection) {
+            this.Crossover = Crossover;
+            this.CrossoverRatio = CrossoverRatio;
+            this.Mutation = Mutation;
+            this.MutationRatio = MutationRatio;
+            this.Selection = Selection;
+            //TODO Erzeuge Anfangspopulation
+            //TODO Berechne Fitness der Anfangspopulation
         }
 
         public void run() {
-            //TODO run füllen
-            crossover.ArithmeticCrossover arithmeticCrossover = new crossover.ArithmeticCrossover();
-            ArrayList<base.Knapsack> arithmeticChilds = arithmeticCrossover.doCrossover(knapsack01, knapsack02);
-        }
-    }
-
-    public static class ServiceDM implements Runnable {
-        //TODO Variablen einfügen
-        base.Knapsack knapsack01;
-        base.Knapsack knapsack02;
-
-        public Service(base.Knapsack knapsack01, base.Knapsack knapsack02) {
-            //TODO Konstruktor
-            this.knapsack01 = knapsack01;
-            this.knapsack02 = knapsack02;
-        }
-
-        public void run() {
-            //TODO run füllen
-            crossover.ArithmeticCrossover arithmeticCrossover = new crossover.ArithmeticCrossover();
-            ArrayList<base.Knapsack> arithmeticChilds = arithmeticCrossover.doCrossover(knapsack01, knapsack02);
+            //for(int i = 0; i< 10000; i++) {
+            for(int i = 0; i< Configuration.MaximumNumberOfIterations; i++) { // Läuft so oft wie -i angegeben
+                //TODO Configuration Name anpassen
+                if(Crossover == "1PX") {
+                    //TODO führe 1PX aus
+                } //TODO Jeden Parameter Abfrage zund entsprechende Mthode ausführen
+            }
+            //TODO Auswertung der Fitness
         }
     }
 }
