@@ -1,8 +1,5 @@
 package parameterRecommender;
 
-import base.Knapsack;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -22,7 +19,6 @@ public class ApplicationParameterRecommender {
         }
     }
 
-    //wird 3200 mal aufgerufen
     public static ExecutorService execute() {
         ExecutorService executor = Executors.newFixedThreadPool(Configuration.instance.numberOfProcessors);
 
@@ -61,14 +57,11 @@ public class ApplicationParameterRecommender {
         private String MutationRatio;
         private String Selection;
         private double fitness = 0;
+        private main.Application application = new Application();
 
         public double getFitness() {
             return fitness;
         }
-
-        //TODO Population einfügen
-        Knapsack knapsack = new Knapsack();
-        // Vielleicht damit?
 
         public Service(String Crossover, String CrossoverRatio, String Mutation, String MutationRatio, String Selection) {
             this.Crossover = Crossover;
@@ -76,20 +69,14 @@ public class ApplicationParameterRecommender {
             this.Mutation = Mutation;
             this.MutationRatio = MutationRatio;
             this.Selection = Selection;
-            //TODO Erzeuge Anfangspopulation
             //generateInitialPopulation();
         }
 
         public void run() {
-            //for(int i = 0; i< 10000; i++) {
             for(int i = 0; i< Configuration.instance.maxIterations; i++) { // Läuft so oft wie -i angegeben
-                //TODO Configuration Name anpassen
-                if(Crossover == "1PX") {
-                    //TODO führe 1PX aus
-                } //TODO Jeden Parameter Abfrage zund entsprechende Mthode ausführen
+                application.main(Crossover, CrossoverRatio, Mutation, MutationRatio, Selection);
             }
-            //TODO Auswertung der Fitness
-            //fitness = population.getFitness();
+            fitness = application.getFitness();
             if(fitness > Configuration.instance.bestFitnessService.fitness){
                 Configuration.instance.bestFitnessService = this;
             }
