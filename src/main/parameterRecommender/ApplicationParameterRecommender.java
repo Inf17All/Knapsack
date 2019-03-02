@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationParameterRecommender {
     public static void main(String... args) {
-        //TODO Parameter für ParameterRecommenderApplication entweder aus main args oder mit Scanner zur Laufzeit einlesen
+        Configuration.instance.scanMaxNumberOfIterations(); // Lese Parameter
 
         ExecutorService executor = execute();
         try {
@@ -18,10 +18,6 @@ public class ApplicationParameterRecommender {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-        //TODO nach 10000 Iterationen einer bestimmten Parameter Konfiguration die Kapazität, Fitness usw. testen und dann optimale Parameter vorschlagen
     }
 
     //wird 3200 mal aufgerufen
