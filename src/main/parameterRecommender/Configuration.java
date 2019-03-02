@@ -5,7 +5,7 @@ import java.util.Scanner;
 public enum Configuration {
     instance;
 
-    public int numberOfCores = Runtime.getRuntime().availableProcessors();
+    public int numberOfProcessors = Runtime.getRuntime().availableProcessors();
     public int maxIterations = 1000000;
 
     public void setMaxIterations(int iterations){
