@@ -15,8 +15,17 @@ public class Knapsack {
         geneList.addAll(knapsack.getGeneList());
     }
 
+    public void setGeneList(ArrayList<Integer> geneList) {
+        this.geneList = geneList;
+    }
+
     public ArrayList<Integer> getGeneList() {
         return geneList;
+    }
+    
+    // Setter für Crossover
+    public void setGeneList(ArrayList<Integer> geneList) {
+        this.geneList = geneList;
     }
 
     public int getTotal() {
@@ -27,6 +36,17 @@ public class Knapsack {
                 total += Configuration.instance.itemList.get(i).getValue();
 
         return total;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Knapsack) {
+            Knapsack compare = (Knapsack) obj;
+            if (compare.getItems().equals(getItems())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String toString() {
