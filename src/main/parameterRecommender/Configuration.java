@@ -1,5 +1,7 @@
 package parameterRecommender;
 
+import java.util.Scanner;
+
 public enum Configuration {
     instance;
 
@@ -8,5 +10,14 @@ public enum Configuration {
 
     public void setMaxIterations(int iterations){
         this.maxIterations = iterations;
+    }
+
+    public void scanMaxNumberOfIterations(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Set maximum number of iterations:");
+        this.maxIterations = scanner.nextInt();
+
+        scanner.close();
     }
 }
