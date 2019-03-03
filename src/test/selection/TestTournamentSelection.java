@@ -15,7 +15,10 @@ public class TestTournamentSelection {
         List<Knapsack> population = data.TestUtils.getTestPopulation();
         List<Knapsack> selectedPopulation = selection.doSelection((Population) population);
 
+        //Test ob neue selektierte Population existiert
         Assertions.assertNotNull(selectedPopulation);
+
+        //Test ob überhaupt etwas an der zu selektierenden Population verändert wurde
         Assertions.assertNotEquals(population, selectedPopulation);
     }
 }
