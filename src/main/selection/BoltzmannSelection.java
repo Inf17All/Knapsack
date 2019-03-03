@@ -5,6 +5,8 @@ import base.Population;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 // BS
 public class BoltzmannSelection extends Selection {
@@ -13,29 +15,34 @@ public class BoltzmannSelection extends Selection {
 
     public ArrayList<Knapsack> doSelection(Population population) {
 
-        /*
-
-        What's my temperature? Total fitness of population?
-        What's my energy? Selection (1) or death (0)? Fitness?
-
-         */
-
         ArrayList<Knapsack> knapsacks = population.getKnapsackList();
 
         MersenneTwisterFast mtf = new MersenneTwisterFast(System.nanoTime());
 
         // formula: p(e) = exp(-e/(kB*T))
 
-        int temperature = knapsacks.stream().mapToInt(Knapsack::getTotal).sum(); // T: total fitness of pop
+        // T: average fitness of population
+        double temperature = knapsacks.stream().mapToInt(Knapsack::getTotal).average().getAsDouble();
 
-        for (Knapsack k : knapsacks) {
+        // map knapsacks and their probabilities
+        Map<Knapsack, Double> probabilityMap = new HashMap<Knapsack, Double>();
+        for (int i = 0; i < knapsacks.size(); i++) {
 
-            int knapsackIndex = knapsacks.indexOf(k);
+            Knapsack currentKnapsack = knapsacks.get(i);
 
-            double pe = Math.exp(-k.getTotal() / (kB * temperature));
+            // multiplying by 5e22 to shift probabilities to a reasonable level
+            probabilityMap.put(currentKnapsack, Math.exp(-currentKnapsack.getTotal() / (kB * temperature * 5e22)));
+        }
 
-            // remove if true because formula spits out high probabilities for less fit individuals
-            if(mtf.nextBoolean(pe)) knapsacks.remove(k);
+        int i = 0;
+        int populationSizeBeforeSelection = knapsacks.size();
+        ArrayList<Knapsack> unchangedKnapsackList = knapsacks;
+
+        while (knapsacks.size() > populationSizeBeforeSelection * 0.8) { // keep 80 % of the population alive
+
+            if (mtf.nextBoolean(probabilityMap.get(unchangedKnapsackList.get(i)))) knapsacks.remove(i);
+
+            i = (i + 1) % populationSizeBeforeSelection;
         }
 
         return knapsacks;

@@ -5,8 +5,9 @@ import base.Population;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 // RS
 public class RankSelection extends Selection {
@@ -22,11 +23,20 @@ public class RankSelection extends Selection {
 
         for (int i = 0; i < knapsackList.size(); i++) totalRanks += i + 1; // add up ranks
 
-        for (Knapsack k : knapsackList) { // todo: remove optimal amout of elements!
+        // map knapsacks and their probabilities
+        Map<Knapsack, Double> probabilityMap = new HashMap<Knapsack, Double>();
+        for (int i = 0; i < knapsackList.size(); i++) probabilityMap.put(knapsackList.get(i), ((i + 1) * 1.0) / totalRanks);
 
-            int knapsackIndex = knapsackList.indexOf(k);
+        // select individuals to remove from population
+        int populationSizeBeforeSelection = knapsackList.size();
+        int i = 0; // index
+        ArrayList<Knapsack> sortedAndUnchangedKnapsackList = knapsackList; // sorted knapsacks (won't change)
 
-            if(!mtf.nextBoolean((knapsackIndex * 1.0) / totalRanks)) knapsackList.remove(k);
+        while(knapsackList.size() > populationSizeBeforeSelection * 0.8){ // keep 80 % of the population alive
+
+            if(!mtf.nextBoolean(probabilityMap.get(sortedAndUnchangedKnapsackList.get(i)))) knapsackList.remove(i);
+
+            i = (i + 1) % knapsackList.size();
         }
 
         return knapsackList;
