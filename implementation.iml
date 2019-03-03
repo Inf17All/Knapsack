@@ -14,6 +14,6 @@
     <orderEntry type="library" name="hsqldb" level="project" />
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="json-simple-1.1" level="project" />
-    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
