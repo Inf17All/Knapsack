@@ -15,10 +15,6 @@ public class Knapsack {
         geneList.addAll(knapsack.getGeneList());
     }
 
-    public void setGeneList(ArrayList<Integer> geneList) {
-        this.geneList = geneList;
-    }
-
     public ArrayList<Integer> getGeneList() {
         return geneList;
     }

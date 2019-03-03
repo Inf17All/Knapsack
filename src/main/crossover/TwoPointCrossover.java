@@ -1,6 +1,7 @@
-package main.crossover;
+package crossover;
 
 import base.Knapsack;
+import crossover.Crossover;
 import random.MersenneTwisterFast;
 
 import java.util.ArrayList;
