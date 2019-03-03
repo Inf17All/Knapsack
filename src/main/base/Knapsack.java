@@ -15,10 +15,6 @@ public class Knapsack {
         geneList.addAll(knapsack.getGeneList());
     }
 
-    public void setGeneList(ArrayList<Integer> geneList) {
-        this.geneList = geneList;
-    }
-
     public ArrayList<Integer> getGeneList() {
         return geneList;
     }
@@ -42,9 +38,10 @@ public class Knapsack {
     public boolean equals(Object obj) {
         if (obj instanceof Knapsack) {
             Knapsack compare = (Knapsack) obj;
-            if (compare.getItems().equals(getItems())) {
+            // todo: what is meant to happen here?
+           /* if (compare.getItems().equals(getItems())) {
                 return true;
-            }
+            }*/
         }
         return false;
     }
