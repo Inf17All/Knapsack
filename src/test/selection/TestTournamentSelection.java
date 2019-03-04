@@ -20,5 +20,8 @@ public class TestTournamentSelection {
 
         //Test ob überhaupt etwas an der zu selektierenden Population verändert wurde
         Assertions.assertNotEquals(population, selectedPopulation);
+
+        //Test ob Population veringert wurde
+        Assertions.assertTrue(selectedPopulation.size() < population.size());
     }
 }

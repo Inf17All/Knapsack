@@ -15,14 +15,10 @@ public class Knapsack {
         geneList.addAll(knapsack.getGeneList());
     }
 
-    public void setGeneList(ArrayList<Integer> geneList) {
-        this.geneList = geneList;
-    }
-
     public ArrayList<Integer> getGeneList() {
         return geneList;
     }
-    
+
     // Setter für Crossover
     public void setGeneList(ArrayList<Integer> geneList) {
         this.geneList = geneList;
@@ -42,7 +38,7 @@ public class Knapsack {
     public boolean equals(Object obj) {
         if (obj instanceof Knapsack) {
             Knapsack compare = (Knapsack) obj;
-            if (compare.getItems().equals(getItems())) {
+            if (compare.getGeneList().equals(getGeneList())) {
                 return true;
             }
         }
