@@ -1,7 +1,7 @@
 import crossover.Crossover;
-import data.HSQLDBManager;
 import mutation.Mutation;
 import selection.Selection;
+import data.HSQLManagerForEvolution.HSQLManager;
 
 public class Application {
     private Selection selection;
@@ -18,12 +18,16 @@ public class Application {
     }
 
     public void startupHSQLDB() {
-        HSQLDBManager.instance.startup();
-        HSQLDBManager.instance.init();
+        HSQLManager.Knapsack.startup();
+    }
+
+    //Drops tables
+    public void initHSQLDB(){
+        HSQLManager.Knapsack.init();
     }
 
     public void shutdownHSQLDB() {
-        HSQLDBManager.instance.shutdown();
+        HSQLManager.Knapsack.close();
     }
 
     public void loadData() {
@@ -36,6 +40,5 @@ public class Application {
 
     public void execute() {
         System.out.println("--- GeneticAlgorithm.execute()");
-        HSQLDBManager.instance.insert("hello world");
     }
 }
