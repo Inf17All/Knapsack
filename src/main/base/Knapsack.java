@@ -38,10 +38,9 @@ public class Knapsack {
     public boolean equals(Object obj) {
         if (obj instanceof Knapsack) {
             Knapsack compare = (Knapsack) obj;
-            // todo: what is meant to happen here?
-           /* if (compare.getItems().equals(getItems())) {
+            if (compare.getItems().equals(getItems())) {
                 return true;
-            }*/
+            }
         }
         return false;
     }

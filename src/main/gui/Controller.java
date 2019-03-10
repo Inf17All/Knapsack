@@ -18,9 +18,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 
-public class Controller extends Application {
-
-    // testArray because real data was not given from other team
+public class Controller extends Application { // testArray because real data was not given from other team
     int knapsackArray[] = {1,12,17};
     int lastKnapsackItem = -1;
     int knapsackPosition = 1;
@@ -110,7 +108,6 @@ public class Controller extends Application {
 
 
                         Button startButton = (Button) scene.lookup("#startButton");
-                        // todo: fill start button
                         startButton.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent e) {
@@ -122,7 +119,6 @@ public class Controller extends Application {
                         stepButton.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent e) {
-                                // todo: fill step button
                                 step(scene);
                             }
                         });
@@ -287,4 +283,5 @@ public class Controller extends Application {
         launch(args);
     }
 }
+
 
