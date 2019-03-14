@@ -3,11 +3,9 @@ package selection;
 import configuration.Configuration;
 import base.Knapsack;
 import base.Population;
+import random.MersenneTwisterFast;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 
 // RWS
@@ -36,7 +34,7 @@ public class RouletteWheelSelection extends Selection {
 
         ArrayList<Knapsack> order = new ArrayList<>();
         while (!num.isEmpty()){
-            double randomNumber = new Random.MersenneTwisterFast().nextDouble(0,num.lastKey());
+            double randomNumber = new MersenneTwisterFast().nextDouble(0,num.lastKey());
             for (Map.Entry<Double,Knapsack> selecktion :num.entrySet()){
                 if (randomNumber <= selecktion.getKey()){
                     order.add(selecktion.getValue());
