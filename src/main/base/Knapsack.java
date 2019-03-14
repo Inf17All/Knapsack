@@ -38,7 +38,7 @@ public class Knapsack {
     public boolean equals(Object obj) {
         if (obj instanceof Knapsack) {
             Knapsack compare = (Knapsack) obj;
-            if (compare.getItems().equals(getItems())) {
+            if (compare.getGeneList().equals(getGeneList())) {
                 return true;
             }
         }

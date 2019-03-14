@@ -1,6 +1,6 @@
-package Selection;
+package selection;
 
-import Configuration.Configuration;
+import configuration.Configuration;
 import base.Knapsack;
 import base.Population;
 
