@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Population {
-    private List<Knapsack> knapsackList;
+    private ArrayList<Knapsack> knapsackList;
 
-    public List<Knapsack> getKnapsackList() {
+    public ArrayList<Knapsack> getKnapsackList() {
         return knapsackList;
     }
 
-    public void setKnapsackList(List<Knapsack> knapsackList) {
+    public void setKnapsackList(ArrayList<Knapsack> knapsackList) {
         this.knapsackList = knapsackList;
     }
 
