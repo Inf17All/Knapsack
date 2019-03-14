@@ -11,6 +11,8 @@ public class InversionMutation extends Mutation {
         ArrayList<Integer> values = knapsack.getGeneList();
         ArrayList<Integer> valuesNew = new ArrayList<Integer>();
         int[] range = getRandomRange(knapsack,true);
+        int rangelen = range[1] - range[0];
+
 
         int i = 0;
         while(i<range[0]){
@@ -20,8 +22,8 @@ public class InversionMutation extends Mutation {
 
         int temp = i;
         while(i>=range[0] && i<=range[1]){
-            valuesNew.add(values.get(range[2]+temp));
-            range[2]--;
+            valuesNew.add(values.get(rangelen+temp));
+            rangelen--;
             i++;
         }
 
