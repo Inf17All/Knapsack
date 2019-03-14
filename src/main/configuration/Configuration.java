@@ -1,27 +1,48 @@
 package configuration;
 
-import base.Item;
+import crossover.Crossover;
+import mutation.Mutation;
 import random.MersenneTwisterFast;
+import selection.Selection;
 
 import java.util.ArrayList;
 
 public enum Configuration {
     instance;
-
-    public String fileSeparator = System.getProperty("file.separator");
+    public MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.currentTimeMillis());
     public String userDirectory = System.getProperty("user.dir");
-
+    public String fileSeparator = System.getProperty("file.separator");
     public String dataDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
-    public String dataFilePath = dataDirectory + "knapsack_instance.csv";
 
-    public String databaseFile = dataDirectory + "datastore.db";
+    // base
+    public int maximumKnapsackCapacity = 0;
+    public int numberOfItems = 0;
+    public ArrayList<Integer> weightList = new ArrayList<>();
+    public ArrayList<Integer> valueList = new ArrayList<>();
+    public int totalValue = 0;
+    public double offset = 0;
+    public double penalty = 0;
+    public int sizeOfPopulation = 100;
+    public int maximumNumberOfGenerations = 1000;
 
-    public MersenneTwisterFast randomNumberGenerator = new MersenneTwisterFast(System.currentTimeMillis());
+    // selection
+    public Selection selection;
+    public double tournamentKValue;
 
-    public ArrayList<Item> itemList = new ArrayList<>();
-
-    public CrossoverType crossoverType = CrossoverType.KPX;
-    public MutationType mutationType = MutationType.EM;
+    // crossover
+    public Crossover crossover;
     public double crossoverRatio = 0.7;
-    public double mutationRatio = 0.001;
+    public int numberOfNCrossoverSlicePoints = 2;
+
+    // mutation
+    public Mutation mutation;
+    public double mutationRatio = 0.01;
+    public int numberOfNMutationPoints = 2;
+
+    // solution
+    public boolean[] optimalSolution;
+    public StringBuilder optimalSolutionString = new StringBuilder();
+    public int optimalSolutionWeight = 0;
+    public int optimalSolutionValue = 0;
+    public double optimalSolutionFitness = 0;
 }
