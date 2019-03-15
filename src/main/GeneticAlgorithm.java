@@ -1,5 +1,6 @@
-import base.Population;
+import base.Knapsack;
 
+import base.Population;
 import configuration.Configuration;
 import crossover.ArithmeticCrossover;
 import crossover.IntermediateCrossover;
@@ -24,6 +25,7 @@ import selection.TournamentSelection;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GeneticAlgorithm {
@@ -105,6 +107,10 @@ public class GeneticAlgorithm {
                     geneticAlgorithm.getConfigurationByUserInput();
                 }
 
+               /* geneticAlgorithm.doSelection();
+                geneticAlgorithm.doMutation();
+                geneticAlgorithm.doCrossover();*/
+
                 geneticAlgorithm.execute();
             }
         }
@@ -136,12 +142,8 @@ public class GeneticAlgorithm {
             Configuration.instance.tournamentKValue = inputReader.nextDouble();
         } else if (selectionAlgorithm == 2) {
             Configuration.instance.selection = new RankSelection();
-            System.out.print("k-value for tournament selection (): ");
-            Configuration.instance.tournamentKValue = inputReader.nextDouble();
         } else if (selectionAlgorithm == 3) {
             Configuration.instance.selection = new BoltzmannSelection();
-            System.out.print("k-value for tournament selection (): ");
-            Configuration.instance.tournamentKValue = inputReader.nextDouble();
         }
 
         // crossover
@@ -157,19 +159,24 @@ public class GeneticAlgorithm {
             Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 1) {
             Configuration.instance.crossover = new IntermediateCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 2) {
             Configuration.instance.crossover = new KPointCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 3) {
             Configuration.instance.crossover = new OnePointCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 4) {
             Configuration.instance.crossover = new TwoPointCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 5) {
             Configuration.instance.crossover = new UniformCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 6) {
             Configuration.instance.crossover = new HeuristicCrossover();
+            Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 7) {
             Configuration.instance.crossover = new ScatteredCrossover();
-
         }
 
         // mutation
@@ -181,28 +188,31 @@ public class GeneticAlgorithm {
 
         if (mutationAlgorithm == 0) {
             Configuration.instance.mutation = new DisplacementMutation();
-            System.out.print("number of mutation points (usually 1-4): ");
             Configuration.instance.numberOfNMutationPoints = inputReader.nextInt();
         } else if (mutationAlgorithm == 1) {
             Configuration.instance.mutation = new ExchangeMutation();
+            Configuration.instance.numberOfNMutationPoints = inputReader.nextInt();
         } else if (mutationAlgorithm == 2) {
             Configuration.instance.mutation = new ScrambleMutation();
+            Configuration.instance.numberOfNMutationPoints = inputReader.nextInt();
         } else if (mutationAlgorithm == 3) {
             Configuration.instance.mutation = new InsertionMutation();
+            Configuration.instance.numberOfNMutationPoints = inputReader.nextInt();
         } else if (mutationAlgorithm == 4) {
             Configuration.instance.mutation = new InversionMutation();
         }
-
     }
 
-    public void execute() {
-        try {
-            // load data: capacity
-            Scanner maximumCapacityScanner = new Scanner(new File(Configuration.instance.dataDirectory + "capacity.txt"));
-            Configuration.instance.maximumKnapsackCapacity = maximumCapacityScanner.nextInt();
-            maximumCapacityScanner.close();
 
-            // load data: weight
+    public void execute() {
+
+        try {
+            // capacity
+            Scanner capacityScanner = new Scanner(new File(Configuration.instance.dataDirectory + "capacity.txt"));
+            Configuration.instance.maximumKnapsackCapacity = capacityScanner.nextInt();
+            capacityScanner.close();
+
+            // weight
             Scanner weightScanner = new Scanner(new File(Configuration.instance.dataDirectory + "weight.txt"));
             while (weightScanner.hasNextInt()) {
                 Configuration.instance.numberOfItems++;
@@ -211,7 +221,7 @@ public class GeneticAlgorithm {
             }
             weightScanner.close();
 
-            // load data: value
+            //  value
             Scanner valueScanner = new Scanner(new File(Configuration.instance.dataDirectory + "value.txt"));
             while (valueScanner.hasNextInt()) {
                 int value = valueScanner.nextInt();
@@ -220,77 +230,49 @@ public class GeneticAlgorithm {
             }
             valueScanner.close();
 
-            double temp;
+            Integer tempChild;
             for (int i = 0; i < Configuration.instance.numberOfItems; i++) {
                 Configuration.instance.offset += Configuration.instance.valueList.get(i);
-                temp = ((double) Configuration.instance.valueList.get(i)) / Configuration.instance.weightList.get(i);
-                if (temp > Configuration.instance.penalty)
-                    Configuration.instance.penalty = temp;
+                tempChild = (Configuration.instance.valueList.get(i)) / Configuration.instance.weightList.get(i);
+                if (tempChild > Configuration.instance.penalty)
+                    Configuration.instance.penalty = tempChild;
             }
 
-            Configuration.instance.offset *= .3;
-            Scanner solutionScanner = new Scanner(new File(Configuration.instance.dataDirectory + "solution.txt"));
-            Configuration.instance.optimalSolution = new boolean[Configuration.instance.numberOfItems];
+            Configuration.instance.offset *= 0.1;
+            Scanner solScanner = new Scanner(new File(Configuration.instance.dataDirectory + "solution.txt"));
+            Configuration.instance.optimalSolution = new Integer[Configuration.instance.numberOfItems];
 
-            for (int i = 0; i < Configuration.instance.numberOfItems && solutionScanner.hasNextInt(); i++) {
-                if (solutionScanner.nextInt() == 0) {
-                    Configuration.instance.optimalSolution[i] = false;
-                    Configuration.instance.optimalSolutionString.append("0");
-                } else {
-                    Configuration.instance.optimalSolution[i] = true;
-                    Configuration.instance.optimalSolutionString.append("1");
-                    Configuration.instance.optimalSolutionWeight += Configuration.instance.weightList.get(i);
-                    Configuration.instance.optimalSolutionValue += Configuration.instance.valueList.get(i);
-                }
-            }
+            //for SChleife?
 
-            Configuration.instance.optimalSolutionFitness = fitness(Configuration.instance.optimalSolution,
-                    Configuration.instance.optimalSolutionWeight);
+          //  Configuration.instance.optimalSolutionFitness = (double) getFitness(Configuration.instance.optimalSolution, Configuration.instance.optimalSolutionWeight);
 
-            solutionScanner.close();
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+            solScanner.close();
+        } catch (
+                IOException e) {
+            System.err.println(e.getMessage());
         }
 
-        // print
-        System.out.println(" item # |  value |   weight |");
 
-        for (int i = 0; i < Configuration.instance.numberOfItems; i++)
-            System.out.printf("%7d |%7d |%7d |\n", i, Configuration.instance.valueList.get(i), Configuration.instance.weightList.get(i));
-
-        System.out.println("maximumKnapsackCapacity : " + Configuration.instance.maximumKnapsackCapacity);
-        System.out.println("numberOfItems           : " + Configuration.instance.numberOfItems);
-        System.out.println("totalValue              : " + Configuration.instance.totalValue);
-        System.out.println();
-
-        // generate initial chromosomes
-        boolean[][] chromosomePool = new boolean[Configuration.instance.sizeOfPopulation][Configuration.instance.numberOfItems];
+        int[][] chromosomePool = new int[Configuration.instance.sizeOfPopulation][Configuration.instance.numberOfItems];
         double[] fitnessPool = new double[Configuration.instance.sizeOfPopulation];
         int[] weightPool = new int[Configuration.instance.sizeOfPopulation];
 
-        for (int i = 0; i < Configuration.instance.sizeOfPopulation; i++) {
-            for (int j = 0; j < Configuration.instance.numberOfItems; j++) {
-                chromosomePool[i][j] = Configuration.instance.randomGenerator.nextBoolean();
-                if (chromosomePool[i][j])
-                    weightPool[i] += Configuration.instance.weightList.get(j);
-            }
-            fitnessPool[i] = fitness(chromosomePool[i], weightPool[i]);
-        }
+        //FOR-Schleife?
 
         // main loop
-        double maxFitnessSoFar = 0;
+        double fitnessSoFar = 0;
 
         for (int currentGeneration = 0; currentGeneration < Configuration.instance.maximumNumberOfGenerations; currentGeneration++) {
             // selection
-            int[] selectedParentPool = Configuration.instance.selection.doSelection();
+            // int[] selectedParentPool = Configuration.instance.selection.doSelection();
 
             // crossover
-            boolean[][] childPool = Configuration.instance.crossover.doCrossover(Tour tour01, Tour tour02);
+            //  int[][] childPool = Configuration.instance.crossover.doCrossover();
 
             // mutation
-            for (int i = 0; i < Configuration.instance.sizeOfPopulation; i++)
+          /*  for (int i = 0; i < Configuration.instance.sizeOfPopulation; i++)
                 if (Configuration.instance.randomGenerator.nextDouble() < Configuration.instance.mutationRatio)
-                    childPool[i] = Configuration.instance.mutation.doMutation(Tour tour);
+                    childPool[i] = Configuration.instance.mutation.doMutation();
 
             int currentBestIndex = 0;
             int globalBestIndex = 1;
@@ -302,10 +284,10 @@ public class GeneticAlgorithm {
                 } else if (fitnessPool[i] > fitnessPool[globalBestIndex]) {
                     globalBestIndex = i;
                 }
-            }
-
-            if (fitnessPool[currentBestIndex] > maxFitnessSoFar) {
-                maxFitnessSoFar = fitnessPool[currentBestIndex];
+            }*/
+/*
+            if (fitnessPool[currentBestIndex] > fitnessSoFar) {
+                fitnessSoFar = fitnessPool[currentBestIndex];
                 if (currentGeneration > 100) {
                     double percent = (fitnessPool[0] / Configuration.instance.optimalSolutionFitness) * 100;
                     System.out.printf(currentGeneration + " - best fitness : %,.2f%% of known optimum\n", percent);
@@ -325,43 +307,20 @@ public class GeneticAlgorithm {
             for (int i = 2; i < Configuration.instance.sizeOfPopulation; i++) {
                 weightPool[i] = 0;
                 for (int j = 0; j < Configuration.instance.numberOfItems; j++) {
-                    if (chromosomePool[i][j])
+                    if (chromosomePool[i][j] != 0)
                         weightPool[i] += Configuration.instance.weightList.get(j);
                 }
                 fitnessPool[i] = fitness(chromosomePool[i], weightPool[i]);
             }
+        }*/
+
+
         }
-
-        // determine best fitness
-        int indexBestFitness = 0;
-        for (int i = 1; i < Configuration.instance.sizeOfPopulation; i++)
-            if (fitnessPool[i] > fitnessPool[indexBestFitness] && weightPool[i] <= Configuration.instance.maximumKnapsackCapacity)
-                indexBestFitness = i;
-        StringBuilder bestSolutionString = new StringBuilder();
-        int bestSolutionValue = 0;
-
-        for (int i = 0; i < Configuration.instance.numberOfItems; i++) {
-            if (chromosomePool[indexBestFitness][i]) {
-                bestSolutionString.append("1");
-                bestSolutionValue += Configuration.instance.valueList.get(i);
-            } else
-                bestSolutionString.append("0");
-        }
-
-        System.out.println();
-        System.out.println("optimal solution : " + Configuration.instance.optimalSolutionString);
-        System.out.println("optimal fitness  : " + fitness(Configuration.instance.optimalSolution, Configuration.instance.optimalSolutionWeight));
-        System.out.println("optimal value    : " + Configuration.instance.optimalSolutionValue);
-        System.out.println();
-        System.out.println("solution         : " + bestSolutionString);
-        System.out.println("fitness          : " + fitnessPool[indexBestFitness]);
-        System.out.println("value            : " + bestSolutionValue);
-    }
-
-    public double fitness(boolean[] chromosome, int s) {
+/*
+    public double fitness(int[] chromosome, int s) {
         int value = 0;
         for (int i = 0; i < Configuration.instance.numberOfItems; i++)
-            if (chromosome[i])
+            if (chromosome[i] != 0)
                 value += Configuration.instance.valueList.get(i);
         if (s > Configuration.instance.maximumKnapsackCapacity) {
             double result = value - ((s - Configuration.instance.maximumKnapsackCapacity) * Configuration.instance.penalty + Configuration.instance.offset);
@@ -371,5 +330,34 @@ public class GeneticAlgorithm {
                 return result;
         } else
             return value;
+    }*/
+
+
+/*
+
+    public void doSelection() {
+
+
+
+    }
+
+    public void doMutation(){
+
+    }
+
+    public void doCrossover(){
+        Knapsack knapsack = new Knapsack();
+
+        knapsack.getTotal();
+    }
+
+    public int getFitness(Integer[] optimalSolution, int optimalSolutionWeight){
+        return Configuration.instance.fitness;
+
+    }
+
+*/
+
+
     }
 }
