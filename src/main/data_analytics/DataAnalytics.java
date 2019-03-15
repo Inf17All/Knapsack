@@ -16,7 +16,7 @@ public enum DataAnalytics implements IDataAnalytics {
     //In welchem abschnitt ist die durchschnittliche verbesserung pro iteration am h/n
     //Returns: int (section number), double (average)
     @Override
-    public Map.Entry<Integer, Double> ai(boolean trueMinFalseMax, long scenarioID, HSQLManagerForEvolution.IHSQLManager manager) {
+    public Map.Entry<Integer, Double> ai(boolean trueMinFalseMax, long scenarioID, IHSQLManager manager) {
         return logic.ai(trueMinFalseMax, EvaluationFactory.getMultipleInstancesFromRows(manager.getAllEvaluationsForScenario(scenarioID)));
     }
 
