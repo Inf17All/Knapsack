@@ -104,7 +104,7 @@ public class GeneticAlgorithm {
                         }
                     }
                 } else {
-                    geneticAlgorithm.getConfigurationByUserInput();
+                   // geneticAlgorithm.getConfigurationByUserInput();
                 }
 
                /* geneticAlgorithm.doSelection();
@@ -115,11 +115,11 @@ public class GeneticAlgorithm {
             }
         }
     }
-
+    /*
 
     public void getConfigurationByUserInput() {
         int selectionAlgorithm;
-        int crossoverAlgorithm;
+        String crossoverAlgorithm;
         int mutationAlgorithm;
         Scanner inputReader = new Scanner(System.in);
 
@@ -150,14 +150,14 @@ public class GeneticAlgorithm {
         System.out.print("crossover ratio (0.50-0.80): ");
         Configuration.instance.crossoverRatio = inputReader.nextDouble();
 
-        System.out.print("crossover algorithm (0 = arithmetic, 1 = intermediate , 2 = KPoint , 3 = OnePoint , 4 = TwoPoint , 5 = uniform , 6 = heuristic , 7 = scattered): ");
+        System.out.print("crossover algorithm (AX = arithmetic, IX = intermediate , KPX = KPoint , 1PX = OnePoint , 2PX = TwoPoint , UNX = uniform , HX = heuristic , SX = scattered): ");
         crossoverAlgorithm = inputReader.nextInt();
 
-        if (crossoverAlgorithm == 0) {
+        if (crossoverAlgorithm == "AX") {
             Configuration.instance.crossover = new ArithmeticCrossover();
 
             Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
-        } else if (crossoverAlgorithm == 1) {
+        } else if (crossoverAlgorithm == "IX") {
             Configuration.instance.crossover = new IntermediateCrossover();
             Configuration.instance.numberOfNCrossoverSlicePoints = inputReader.nextInt();
         } else if (crossoverAlgorithm == 2) {
@@ -202,7 +202,7 @@ public class GeneticAlgorithm {
             Configuration.instance.mutation = new InversionMutation();
         }
     }
-
+*/
 
     public void execute() {
 
