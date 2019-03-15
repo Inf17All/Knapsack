@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Statistics {
+public class  Statistics {
     private static HSQLManager database;
 
     public static void main(String[] args) {
