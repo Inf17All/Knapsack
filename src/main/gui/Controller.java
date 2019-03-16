@@ -13,11 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
 
 import java.io.*;
-
+/*
 public class Controller extends Application { // testArray because real data was not given from other team
     int knapsackArray[] = {1,12,17};
     int lastKnapsackItem = -1;
@@ -44,15 +44,16 @@ public class Controller extends Application { // testArray because real data was
                 if (event.getGestureSource() != dragTarget
                         && event.getDragboard().hasFiles()) {
                     /* allow for both copying and moving, whatever user chooses */
-                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+/*                    event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
                 }
                 event.consume();
             }
         });
 
+*/
 
         // lessons learned: NOT working with a stackpane, nothing was clickable
-        AnchorPane root = new AnchorPane();
+/*        AnchorPane root = new AnchorPane();
 
         // load scene
         root.getChildren().setAll(parent);
@@ -167,7 +168,7 @@ public class Controller extends Application { // testArray because real data was
                 }
                 /* let the source know whether the string was successfully
                  * transferred and used */
-                event.setDropCompleted(success);
+/*                event.setDropCompleted(success);
 
                 event.consume();
             }
@@ -284,4 +285,4 @@ public class Controller extends Application { // testArray because real data was
     }
 }
 
-
+*/

@@ -33,7 +33,7 @@ public enum Configuration {
     public int totalValue = 0;
     public double offset = 0;
     public double penalty = 0;
-    public int sizeOfPopulation = 100;
+    public int sizeOfPopulation;
     public int maximumNumberOfGenerations = 1000;
 
     // selection
